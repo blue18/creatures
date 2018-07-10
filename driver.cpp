@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <sort>
+#include <algorithm>
+#include "creature.h"
 
 int main() {
-
+    std::cout << "Hello friend" << std::endl;
 
     return 0;
 }

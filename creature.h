@@ -1,9 +1,9 @@
-
 class Creatures {
 
     public:
       Creatures();
-      Creatures(int, int);
+      Creatures(int newType, int newStrength, int newHit);
+      ~Creatures();
       int getDamage();
 
     private:
@@ -14,6 +14,6 @@ class Creatures {
       std::string name;
       double payoff;
       double cost;
-}
+};
 
 

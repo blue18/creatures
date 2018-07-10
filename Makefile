@@ -1,4 +1,4 @@
-SOURCES = 
+SOURCES = driver.cpp creature.cpp
 CC = g++
 FLAG = -Wall -o
 
