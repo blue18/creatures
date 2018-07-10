@@ -7,7 +7,7 @@ class Creatures {
       int getDamage();
 
     private:
-      int getSpecies();
+      std::string getSpecies();
       int type;
       int strength;
       int hitpoints;

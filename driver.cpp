@@ -4,7 +4,7 @@
 #include "creature.h"
 
 int main() {
-    std::cout << "Hello friend" << std::endl;
-
+    Creatures test1;
+    int temp = test1.getDamage();
     return 0;
 }
