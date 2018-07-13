@@ -21,10 +21,11 @@ Creatures::Creatures(int newType, int newStrength, int newHit) {
 Creatures::~Creatures() {
     std::cout << "Creature destroyed." << std::endl;
 }
+
 // Description - The damage inflicted from this creature in one round.
 int Creatures::getDamage() {
 
-    int damage; 
+    int damage = 0;
     damage = (rand() % strength) + 1;
     std::cout << getSpecies() << " attacks for " << damage << " points!" << std::endl;
     return damage;
@@ -33,17 +34,14 @@ int Creatures::getDamage() {
 // Description - Get the identify of this creature.
 std::string Creatures::getSpecies() {
     switch(type) {
-	case 0: return "Human";
-	case 1: return "Cyberdemon";
-	case 2: return "Balrog";
-	case 3: return "Elf";
+    	case 0: return "Human";
+    	case 1: return "Cyberdemon";
+    	case 2: return "Balrog";
+    	case 3: return "Elf";
     }
     return "Unknown";
 }
 
-
-
-
-
-
-
+int Creatures::getStrength() {
+    return (this->strength);
+}

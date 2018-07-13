@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Creatures {
 
     public:
@@ -5,7 +7,7 @@ class Creatures {
       Creatures(int newType, int newStrength, int newHit);
       ~Creatures();
       int getDamage();
-
+      int getStrength();
     private:
       std::string getSpecies();
       int type;
