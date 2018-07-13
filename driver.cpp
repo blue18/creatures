@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "cyberdemon.h"
+#include "balrog.h"
 
 int main() {
-    Cyberdemon test1;
+    Balrog test1;
     int temp = test1.getDamage();
-    //std::cout << "The value of temp " << temp << std::endl;
+    std::cout << "The value of damage " << temp << std::endl;
     return 0;
       
 }
