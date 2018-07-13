@@ -8,6 +8,10 @@ class Creatures {
       ~Creatures();
       int getDamage();
       int getStrength();
+      int getHitpoints();
+      std::string getName();
+      double getPayoff();
+      double getCost();
     private:
       std::string getSpecies();
       int type;

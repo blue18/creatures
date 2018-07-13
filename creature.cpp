@@ -41,7 +41,26 @@ std::string Creatures::getSpecies() {
     }
     return "Unknown";
 }
-
+// Descriptioin - Get strength
 int Creatures::getStrength() {
     return (this->strength);
+}
+// Description - Get hit points
+int Creatures::getHitpoints() {
+    return (this->hitpoints);
+
+}
+// Description - Get name
+std::string Creatures::getName() {
+    return (this->name);
+
+}
+// Description - Get payoff
+double Creatures::getPayoff() {
+    return (this->payoff);
+
+}
+// Description - Get cost
+double Creatures::getCost() {
+    return (this->cost);
 }
