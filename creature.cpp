@@ -11,6 +11,9 @@ Creatures::Creatures() {
 }
 
 // Description - Initilize creature to new type, strength, hit points
+// Paramters   - newType the type of creature
+//             - newStrenght the amount of strength of creature
+//             - newHit the amount of hitpoints of creature
 Creatures::Creatures(int newType, int newStrength, int newHit) {
     type = newType;
     strength = newStrength;

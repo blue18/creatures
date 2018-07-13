@@ -4,5 +4,5 @@
 Cyberdemon::Cyberdemon() {
 }
 int Cyberdemon::getDamage() {
-    std::cout << getDamage() << std::endl;
+    return (Demon::getDamage());
 }

@@ -3,6 +3,7 @@
 class Demon : public Creatures { 
     public:
       Demon();
+      ~Demon();
       int getDamage();
     private:
 
