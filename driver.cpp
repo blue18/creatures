@@ -2,11 +2,12 @@
 #include <vector>
 #include <algorithm>
 #include "balrog.h"
+#include "world.h"
 
 int main() {
-    Balrog test1;
-    int temp = test1.getDamage();
-    std::cout << "The value of damage " << temp << std::endl;
+    World KO35;
+    KO35.addCreature();
+    std::cout << "Testing addCreature function..." << std::endl;
     return 0;
       
 }

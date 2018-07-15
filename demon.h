@@ -1,3 +1,5 @@
+#ifndef DEMON_H
+#define DEMON_H
 #include "creature.h"
 
 class Demon : public Creatures { 
@@ -8,3 +10,4 @@ class Demon : public Creatures {
     private:
 
 };
+#endif

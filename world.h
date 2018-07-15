@@ -1,16 +1,18 @@
+#ifndef WORLD_H
+#define WORLD_H
+
 #include <iostream>
 #include <queue>
+#include "elf.h"
+#include "cyberdemon.h"
+#include "human.h"
+#include "balrog.h"
 
 class World {
+
     public:
       World();
       ~World();
-    private:
-      std::queue<Human> listOfHumans;
-      std::queue<Elf> listOfElves;
-      std::queue<Cyberdemon> listOfCyberdemon;
-      strd::queue<Balrog> listOfBalrogs;
-    public:
       void addCreature();
       void addCash();
       void avaiableCash();
@@ -18,4 +20,12 @@ class World {
       void startRound();
       void startGame();
       void printTheWinner();
+    private:
+      std::queue<Human> listOfHumans;
+      std::queue<Elf> listOfElves;
+      std::queue<Cyberdemon> listOfCyberdemon;
+      std::queue<Balrog> listOfBalrogs;
+
 };
+
+#endif 

@@ -1,3 +1,5 @@
+#ifndef CREATURE_H
+#define CREATURE_H
 #include <iostream>
 
 class Creatures {
@@ -23,3 +25,4 @@ class Creatures {
 };
 
 
+#endif 
