@@ -8,6 +8,8 @@
 #include "human.h"
 #include "balrog.h"
 
+enum {HUMAN = 0, ELF = 1, CYBERDEMON = 2, BALROG = 3};
+
 class World {
 
     public:
@@ -20,6 +22,8 @@ class World {
       void startRound();
       void startGame();
       void printTheWinner();
+      void selectCreature(int);
+      void createHuman();
     private:
       std::queue<Human> listOfHumans;
       std::queue<Elf> listOfElves;
