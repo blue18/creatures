@@ -25,27 +25,27 @@ void World::addCreature() {
 
     displayCreatureTypes();
 
-    std::cout << "Enter type of creature: ";
+    std::cout << "Enter type of creature (Full Name): ";
     std::cin >> type;
 
     if(type == "human") {
-	selectCreature(HUMAN);
+	selectCreature(name, HUMAN);
     } else if(type == "elf") {
-	selectCreature(ELF);
+	selectCreature(name, ELF);
     } else if(type == "cyberdemon") {
-	selectCreature(CYBERDEMON);
+	selectCreature(name, CYBERDEMON);
     } else if(type == "balrog") {
-	selectCreature(BALROG);
+	selectCreature(name, BALROG);
     } else {
 	std::cout << "Error" << std::endl;
     }
 }
 
 // Description - Select the type of creature 
-void World::selectCreature(creature_type type) {
+void World::selectCreature(std::string name, creature_type type) {
     switch(type) {
 	case HUMAN: 
-	    createHuman();
+	    createHuman(name);
 	    break;
 	case ELF:
 	    break;
@@ -53,11 +53,12 @@ void World::selectCreature(creature_type type) {
 	    break;
 	case BALROG:
 	    break;
+	default:
+	    std::cout << "Error for selecting creature" << std::endl;
     }
 }
-void World::createHuman() {
+void World::createHuman(std::string name) {
     Human aHuman;
-    aHuman.setName("test1"); 
-    //std::cout << "line 52" << std::endl;
-    //std::cout << aHuman.getName() << std::endl;
+    aHuman.setName(name);
+    std::cout << aHuman.getName() << std::endl;
 }

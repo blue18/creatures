@@ -22,8 +22,8 @@ class World {
       void startRound();
       void startGame();
       void printTheWinner();
-      void selectCreature(creature_type);
-      void createHuman();
+      void selectCreature(std::string, creature_type);
+      void createHuman(std::string);
       void displayCreatureTypes();
     private:
       std::queue<Human> listOfHumans;
