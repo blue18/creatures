@@ -24,13 +24,16 @@ class World {
       void printTheWinner();
       void selectCreature(std::string, creature_type);
       void createHuman(std::string);
+      void createElf(std::string);
+      void createCyberdemon(std::string);
+      void createBalrog(std::string);
       void displayCreatureTypes();
+
     private:
       std::queue<Human> listOfHumans;
       std::queue<Elf> listOfElves;
       std::queue<Cyberdemon> listOfCyberdemon;
       std::queue<Balrog> listOfBalrogs;
-
 };
 
 #endif 

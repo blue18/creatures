@@ -15,9 +15,10 @@ void World::displayCreatureTypes() {
     std::cout << "3. elf" << std::endl;
     std::cout << "4. balrog" << std::endl;
 }
+
 // Description - add a new creature to the game 
 void World::addCreature() {
-    std::string name;
+    std::string name; 
     std::string type;
 
     std::cout << "Enter name of creature: ";
@@ -60,5 +61,4 @@ void World::selectCreature(std::string name, creature_type type) {
 void World::createHuman(std::string name) {
     Human aHuman;
     aHuman.setName(name);
-    std::cout << aHuman.getName() << std::endl;
 }
