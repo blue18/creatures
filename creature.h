@@ -14,6 +14,7 @@ class Creatures {
       std::string getName();
       double getPayoff();
       double getCost();
+      void setName(std::string);
     private:
       std::string getSpecies();
       int type;

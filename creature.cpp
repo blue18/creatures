@@ -67,3 +67,8 @@ double Creatures::getPayoff() {
 double Creatures::getCost() {
     return (this->cost);
 }
+// Description - Set name
+// Parameters  - name the name given to this creature
+void Creatures::setName(std::string name) {
+    this->name = name;
+}
