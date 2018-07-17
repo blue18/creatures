@@ -67,21 +67,25 @@ void World::selectCreature(std::string name, creature_type type) {
 void World::createHuman(std::string name) {
     Human aHuman;
     aHuman.setName(name);
+    listOfHumans.push(aHuman);
 }
 
 void World::createElf(std::string name) {
     Elf anElf;
     anElf.setName(name);
+    listOfElves.push(anElf);
 }
 
 void World::createCyberdemon(std::string name) {
     Cyberdemon aCyberdemon;
     aCyberdemon.setName(name);
+    listOfCyberdemon.push(aCyberdemon);
 }
 
 void World::createBalrog(std::string name) {
     Balrog aBalrog;
     aBalrog.setName(name);
+    listOfBalrogs.push(aBalrog);
 }
 
 
