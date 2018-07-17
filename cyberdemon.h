@@ -6,6 +6,7 @@ class Cyberdemon : public Demon {
     public:
       Cyberdemon();
       int getDamage();
+      void setName(std::string);
     private:
 };
 #endif

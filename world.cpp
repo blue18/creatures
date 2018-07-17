@@ -7,8 +7,10 @@
 
 World::World() {
 }
+
 World::~World() {
 }
+
 void World::displayCreatureTypes() {
     std::cout << "1. human" << std::endl;
     std::cout << "2. cyberdemon" << std::endl;
@@ -49,16 +51,61 @@ void World::selectCreature(std::string name, creature_type type) {
 	    createHuman(name);
 	    break;
 	case ELF:
+	    createElf(name);
 	    break;
 	case CYBERDEMON:
+	    createCyberdemon(name);
 	    break;
 	case BALROG:
+	    createBalrog(name);
 	    break;
 	default:
 	    std::cout << "Error for selecting creature" << std::endl;
     }
 }
+
 void World::createHuman(std::string name) {
     Human aHuman;
     aHuman.setName(name);
 }
+
+void World::createElf(std::string name) {
+    Elf anElf;
+    anElf.setName(name);
+}
+
+void World::createCyberdemon(std::string name) {
+    Cyberdemon aCyberdemon;
+    aCyberdemon.setName(name);
+}
+
+void World::createBalrog(std::string name) {
+    Balrog aBalrog;
+    aBalrog.setName(name);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

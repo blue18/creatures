@@ -6,6 +6,7 @@ class Balrog : public Demon {
     public:
       Balrog();
       int getDamage();
+      void setName(std::string name);
     private:
 };
 #endif 

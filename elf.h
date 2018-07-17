@@ -6,6 +6,7 @@ class Elf : public Creatures {
     public:
       Elf();
       int getDamage();
+      void setName(std::string name);
     private:
 
 };

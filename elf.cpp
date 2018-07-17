@@ -1,10 +1,11 @@
 #include "elf.h"
+#include <iostream>
 
 Elf::Elf() {
 
 }
 int Elf::getDamage() {
-    int damage = Demon::getDamage();
+    int damage = Creatures::getDamage();
 
     // Elves inflict double magical damage with a 10% chance 
     srand(time(NULL));
@@ -13,4 +14,9 @@ int Elf::getDamage() {
         damage = damage * 2;
     }
     return damage;
+}
+
+void Elf::setName(std::string name) {
+     Creatures::setName(name);
+     std::cout << "The name entered was: " << Creatures::getName() << std::endl;
 }

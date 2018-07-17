@@ -16,3 +16,7 @@ int Balrog::getDamage() {
 
     return damage;
 }
+void Balrog::setName(std::string name) {
+    Creatures::setName(name);
+    std::cout << "The name entered was: " << Creatures::getName() << std::endl;
+}
