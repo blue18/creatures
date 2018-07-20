@@ -94,13 +94,21 @@ void World::startRound() {
     // randomly pick the creature that attacks first 
     // Initialize random seed
     srand(time(NULL)); 
-    int firstTypePick = rand() % 5;
-    int secondTypePick = rand() % 5;
+    int firstTypePick = rand() % 4;
+    int secondTypePick = rand() % 4;
 
     // rand() % [size of array]
-    int firstTypeMemberPick = rand() % 2; 
-    int secondTypeMemberPick = rand() % 2; 
-     
+    int firstTypeMemberPick = 0;//rand() % listOfHumans.size(); 
+    int secondTypeMemberPick = 0;//rand() % listOfElves.size(); 
+
+    std::cout << listOfHumans.size() << std::endl;
+    std::cout << listOfElves.size() << std::endl;
+    std::cout << listOfCyberdemon.size() << std::endl;
+    std::cout << listOfBalrogs.size() << std::endl;
+    
+    std::cout << "typepick " << firstTypePick << std::endl;    
+    std::cout << "typepick " << secondTypePick << std::endl;
+
     Human firstHuman;
     Elf firstElf;
     Cyberdemon firstCyberdemon;
@@ -116,10 +124,9 @@ void World::startRound() {
 
     std::string respone;
 
-
     // Pick first creature
-    switch(0) {
-       case 0:
+    switch(firstTypePick) {
+        case 0:
 	    firstHuman = listOfHumans.at(firstTypeMemberPick);
 	    break;
 	case 1:
@@ -136,25 +143,30 @@ void World::startRound() {
     }
 
     // Pick second creature
-    switch(0) {
+    switch(secondTypePick) {
 	case 0:
 	    secondHuman = listOfHumans.at(secondTypeMemberPick);
+	    std::cout << secondHuman.getName() << std::endl; 
 	    break;
 	case 1:
 	    secondElf = listOfElves.at(secondTypeMemberPick);
+	    std::cout << secondElf.getName() << std::endl; 
 	    break;
 	case 2:
 	    secondCyberdemon = listOfCyberdemon.at(secondTypeMemberPick); 
+	    std::cout << secondCyberdemon.getName() << std::endl; 
 	    break;
 	case 3:
 	    secondBalrog = listOfBalrogs.at(secondTypeMemberPick); 
+	    std::cout << secondBalrog.getName() << std::endl; 
 	    break;
 	default:
 	    std::cout << "Error for startSound" << std::endl;
 	}
 
+return; 
     // first creature attacks 
-    switch(0) { 
+    switch(firstTypePick) { 
 	case 0:
 	    // human attacks 
 	    firstDamage = firstHuman.getDamage(); 
@@ -165,7 +177,7 @@ void World::startRound() {
     }
 
     // creature that receives the attack
-    switch(0){
+    switch(secondTypePick){
 	case 0:
 	    break;
 	case 1:
@@ -176,7 +188,7 @@ void World::startRound() {
     }
     
     // second creature attacks
-    switch(0) { 
+    switch(secondTypePick) { 
 	case 0:
 	    // human attacks 
 	    secondDamage = secondHuman.getDamage(); 
@@ -196,7 +208,7 @@ void World::startRound() {
     }
 
     // other creature that receives the attack
-    switch(0) {
+    switch(firstTypePick) {
 	case 0: 
 	    // Human health -= secondDamage
 	case 1:
