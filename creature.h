@@ -15,6 +15,7 @@ class Creatures {
       double getPayoff();
       double getCost();
       void setName(std::string);
+      void setHitpoints(int);
     private:
       std::string getSpecies();
       int type;

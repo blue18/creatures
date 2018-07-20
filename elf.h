@@ -7,6 +7,7 @@ class Elf : public Creatures {
       Elf();
       int getDamage();
       void setName(std::string name);
+      int getHitpoints();
     private:
 
 };

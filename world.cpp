@@ -89,23 +89,43 @@ void World::createBalrog(std::string name) {
     listOfBalrogs.push_back(aBalrog);
 }
 
+void pickACreature(int typePick, int typeMemberPick) {
+    Human firstHuman;
+    Elf firstElf;
+    Cyberdemon firstCyberdemon;
+    Balrog firstBalrog;
+
+    switch(typePick) {		
+        case 0:
+	    firstHuman = listOfHumans.at(typeMemberPick);
+	    break;
+        case 1:
+	    firstElf = listOfHumans.at(typeMemberPick);
+	    break;
+        case 2:
+	    firstHuman = listOfHumans.at(typeMemberPick);
+	    break;
+        case 3:
+	    firstHuman = listOfHumans.at(typeMemberPick);
+	    break;
+	default:
+	    std::cout << "error in pickACreature." << std::endl;
+    }
+
+}
+
 void World::startRound() {
 
     // randomly pick the creature that attacks first 
     // Initialize random seed
     srand(time(NULL)); 
-    int firstTypePick = rand() % 4;
-    int secondTypePick = rand() % 4;
+    int firstTypePick = 0;//rand() % 4;
+    int secondTypePick = 1;// rand() % 4;
 
     // rand() % [size of array]
     int firstTypeMemberPick = 0;//rand() % listOfHumans.size(); 
     int secondTypeMemberPick = 0;//rand() % listOfElves.size(); 
 
-    std::cout << listOfHumans.size() << std::endl;
-    std::cout << listOfElves.size() << std::endl;
-    std::cout << listOfCyberdemon.size() << std::endl;
-    std::cout << listOfBalrogs.size() << std::endl;
-    
     std::cout << "typepick " << firstTypePick << std::endl;    
     std::cout << "typepick " << secondTypePick << std::endl;
 
@@ -164,7 +184,8 @@ void World::startRound() {
 	    std::cout << "Error for startSound" << std::endl;
 	}
 
-return; 
+
+
     // first creature attacks 
     switch(firstTypePick) { 
 	case 0:
@@ -173,15 +194,15 @@ return;
 	    break;
 	default:
 	    std::cout << "Error for startSound" << std::endl;
-
     }
 
     // creature that receives the attack
     switch(secondTypePick){
-	case 0:
+        case 0:
 	    break;
 	case 1:
 	    // elfves health -= firstDamage
+	    secondElf.setHitpoints(secondElf.getHitpoints() - firstDamage);
 	    break;
 	default:
 	    std::cout << "Error for startSound" << std::endl;

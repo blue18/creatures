@@ -20,3 +20,6 @@ void Elf::setName(std::string name) {
      Creatures::setName(name);
      std::cout << "The name entered was: " << Creatures::getName() << std::endl;
 }
+int Elf::getHitpoints() {
+    return (Creatures::getHitpoints());
+}

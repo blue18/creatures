@@ -72,3 +72,6 @@ double Creatures::getCost() {
 void Creatures::setName(std::string name) {
     this->name = name;
 }
+void Creatures::setHitpoints(int hitpoints) {
+   this->hitpoints = hitpoints;
+}
