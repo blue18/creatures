@@ -6,7 +6,7 @@
 
 int main() {
     World KO35;
-    KO35.addCreature();
+    KO35.startRound();
     return 0;
       
 }

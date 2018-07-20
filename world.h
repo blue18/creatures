@@ -30,10 +30,10 @@ class World {
       void displayCreatureTypes();
 
     private:
-      std::queue<Human> listOfHumans;
-      std::queue<Elf> listOfElves;
-      std::queue<Cyberdemon> listOfCyberdemon;
-      std::queue<Balrog> listOfBalrogs;
+      std::vector<Human> listOfHumans;
+      std::vector<Elf> listOfElves;
+      std::vector<Cyberdemon> listOfCyberdemon;
+      std::vector<Balrog> listOfBalrogs;
 };
 
 #endif 

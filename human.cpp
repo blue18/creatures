@@ -11,3 +11,7 @@ void Human::setName(std::string name) {
     Creatures::setName(name);
     std::cout << "The name entered was: " << Creatures::getName() << std::endl;
 }
+int Human::getDamage() {
+    int damage;
+    return (damage = Creatures::getDamage());
+}
