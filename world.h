@@ -28,6 +28,7 @@ class World {
       void createCyberdemon(std::string);
       void createBalrog(std::string);
       void displayCreatureTypes();
+      void pickACreature(int, int); 
 
     private:
       std::vector<Human> listOfHumans;
