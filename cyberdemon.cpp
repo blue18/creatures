@@ -1,6 +1,7 @@
 #include "cyberdemon.h"
 
 Cyberdemon::Cyberdemon() {
+    Creatures(2, 10, 10);
 }
 int Cyberdemon::getDamage() {
     return (Demon::getDamage());

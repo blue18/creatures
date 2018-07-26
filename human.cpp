@@ -2,6 +2,7 @@
 #include <iostream>
 
 Human::Human() {
+    Creatures(0, 10, 100);
 }
 Human::~Human() { 
 }
@@ -13,5 +14,7 @@ void Human::setName(std::string name) {
 }
 int Human::getDamage() {
     int damage;
-    return (damage = Creatures::getDamage());
+    damage = Creatures::getDamage();
+    std::cout << "human damage " << damage << std::endl;
+    return damage; 
 }

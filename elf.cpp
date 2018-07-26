@@ -2,7 +2,7 @@
 #include <iostream>
 
 Elf::Elf() {
-
+    Creatures(1, 1000, 100);
 }
 int Elf::getDamage() {
     int damage = Creatures::getDamage();
@@ -13,6 +13,7 @@ int Elf::getDamage() {
         std::cout << "Magical attack inflicts " << damage << " additional damage points!" << std::endl;
         damage = damage * 2;
     }
+    std::cout << "Elf damage " << damage << std::endl;
     return damage;
 }
 
