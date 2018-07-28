@@ -2,7 +2,9 @@
 #include <iostream>
 
 Human::Human() {
-    Creatures(0, 10, 100);
+    setType(0);
+    setStrength(10);
+    setHitpoints(1000);
 }
 Human::~Human() { 
 }

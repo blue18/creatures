@@ -71,5 +71,11 @@ void Creatures::setName(std::string name) {
     this->name = name;
 }
 void Creatures::setHitpoints(int hitpoints) {
-   this->hitpoints = hitpoints;
+    this->hitpoints = hitpoints;
+}
+void Creatures::setType(int type) {
+    this->type = type;
+}
+void Creatures::setStrength(int strength) {
+    this->strength = strength;
 }

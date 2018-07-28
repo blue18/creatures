@@ -16,6 +16,8 @@ class Creatures {
       double getCost();
       void setName(std::string);
       void setHitpoints(int);
+      void setStrength(int);
+      void setType(int);
     private:
       std::string getSpecies();
       int type;

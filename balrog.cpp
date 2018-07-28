@@ -1,7 +1,6 @@
 #include "balrog.h"
 
 Balrog::Balrog() {
-    Creatures(3, 10, 10);
 }
 int Balrog::getDamage() {
 

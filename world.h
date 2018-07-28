@@ -29,10 +29,10 @@ class World {
       void createBalrog(std::string);
       void displayCreatureTypes();
       void pickACreature(int, int); 
-      void humanPick(Human, int, int);
-      void elfPick(Elf, int, int);
-      void cyberdemonPick(Cyberdemon, int, int);
-      void balrogPick(Balrog, int, int);
+      Human* humanPick(Human*, int, int);
+      Elf* elfPick(Elf*, int, int);
+      Cyberdemon* cyberdemonPick(Cyberdemon*, int, int);
+      Balrog* balrogPick(Balrog*, int, int);
 
     private:
       std::vector<Human> listOfHumans;

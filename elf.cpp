@@ -2,7 +2,6 @@
 #include <iostream>
 
 Elf::Elf() {
-    Creatures(1, 1000, 100);
 }
 int Elf::getDamage() {
     int damage = Creatures::getDamage();
