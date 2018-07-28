@@ -5,15 +5,15 @@
 
 // Description - Constructor
 Demon::Demon() {
-
 }
 
 // Description - Destructor
 Demon::~Demon() {
-
 }
 int Demon::getDamage() {
     int damage = Creatures::getDamage();
+
+    std::cout << "Demon attack " << damage << std::endl;
 
     // There is a 5% chance that the demon will inflict 50 additonal damage points. 
     srand(time(NULL));

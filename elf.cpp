@@ -2,6 +2,9 @@
 #include <iostream>
 
 Elf::Elf() {
+    setType(1);
+    setStrength(15);
+    setHitpoints(100);
 }
 int Elf::getDamage() {
     int damage = Creatures::getDamage();
