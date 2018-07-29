@@ -23,3 +23,6 @@ int Human::getDamage() {
 void Human::setHumanIsDead(bool isHumanDead) { 
     Creatures::setCreatureIsDead(isHumanDead);
 }
+bool Human::getHumanIsDead() {
+    return (Creatures::getCreatureIsDead()); 
+}

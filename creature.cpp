@@ -82,3 +82,6 @@ void Creatures::setStrength(int strength) {
 void Creatures::setCreatureIsDead(bool creatureIsDead) {
     this->creatureIsDead = creatureIsDead;
 }
+bool Creatures::getCreatureIsDead() {
+    return (this->creatureIsDead);
+}

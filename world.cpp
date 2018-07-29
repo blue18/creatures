@@ -98,6 +98,7 @@ Human* World::humanPick(Human* aHuman, int typeMemberPick, int typePick) {
     if(listOfHumans.size() > 0) {
 	typeMemberPick = rand() % listOfHumans.size();
 	aHuman = &(listOfHumans.at(typeMemberPick));
+	if(aHuman->getHumanIsDead() == true) { return NULL; }
 	std::cout << "Pick: " << aHuman->getName() << std::endl;
 	std::cout << "Current health: " << aHuman->getHitpoints() << std::endl;
 	return (aHuman);
@@ -149,12 +150,18 @@ Balrog* World::balrogPick(Balrog* aBalrog, int typeMemberPick, int typePick) {
 bool World::isHumanDead(Human* aHuman) { 
     if(aHuman->getHitpoints() <= 0) {
 	aHuman->setHitpoints(0);
-
+	aHuman->setHumanIsDead(true); 
 	std::cout << aHuman->getName() << " is dead!" << std::endl;
 	return true;
     } else {
 	return false;
     }
+}
+void World::printStatus() {
+    std::cout << "Size of Human: " << listOfHumans.size() << std::endl;
+    std::cout << "Size of Elf: " << listOfElves.size() << std::endl;
+    std::cout << "Size of Cyberdemon: " << listOfCyberdemon.size() << std::endl;
+    std::cout << "Size of Balrog: " << listOfBalrogs.size() << std::endl;
 }
 // Description - 
 void World::startRound() {
@@ -183,8 +190,11 @@ void World::startRound() {
     int secondDamage = 0;
 
     std::string respone;
+    
+    printStatus();
 
     do {
+
 	std::cout << "================ Round " << roundNumber << " ======================" << std::endl; 
 
 	// Makes sure that the same creature types are not the same
@@ -196,7 +206,9 @@ void World::startRound() {
 	// Pick first creature
 	switch(firstTypePick) {
 	    case 0:
-		firstHuman = humanPick(firstHuman, firstTypeMemberPick, firstTypePick);
+		do {
+		    firstHuman = humanPick(firstHuman, firstTypeMemberPick, firstTypePick);
+		} while(firstHuman == NULL);
 		break;
 	    case 1:
 		firstElf = elfPick(firstElf, firstTypeMemberPick, firstTypePick);

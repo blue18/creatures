@@ -2,6 +2,7 @@
 #define HUMAN_H
 #include "creature.h"
 class Human : public Creatures {
+
     public:
       Human();
       ~Human();
@@ -9,7 +10,7 @@ class Human : public Creatures {
       void setName(std::string);
       void humanIsDead();
       void setHumanIsDead(bool);
-      
+      bool getHumanIsDead();      
     private:
 };
 #endif 

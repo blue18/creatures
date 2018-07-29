@@ -19,6 +19,7 @@ class Creatures {
       void setStrength(int);
       void setType(int);
       void setCreatureIsDead(bool);
+      bool getCreatureIsDead();
 
     private:
       std::string getSpecies();
@@ -30,6 +31,5 @@ class Creatures {
       double payoff;
       double cost;
 };
-
 
 #endif 
