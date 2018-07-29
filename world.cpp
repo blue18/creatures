@@ -7,6 +7,8 @@
 #include <cstdlib>
 
 World::World() {
+    // Start the round with zero
+    roundNumber = 0; 
 }
 
 World::~World() {
@@ -64,30 +66,34 @@ void World::selectCreature(std::string name, creature_type type) {
 	    std::cout << "Error for selecting creature" << std::endl;
     }
 }
-
+// Description - 
 void World::createHuman(std::string name) {
     Human aHuman;
     aHuman.setName(name);
     listOfHumans.push_back(aHuman);
 }
 
+// Description - 
 void World::createElf(std::string name) {
     Elf anElf;
     anElf.setName(name);
     listOfElves.push_back(anElf);
 }
 
+// Description - 
 void World::createCyberdemon(std::string name) {
     Cyberdemon aCyberdemon;
     aCyberdemon.setName(name);
     listOfCyberdemon.push_back(aCyberdemon);
 }
 
+// Description - 
 void World::createBalrog(std::string name) {
     Balrog aBalrog;
     aBalrog.setName(name);
     listOfBalrogs.push_back(aBalrog);
 }
+// Description - 
 Human* World::humanPick(Human* aHuman, int typeMemberPick, int typePick) {
     if(listOfHumans.size() > 0) {
 	typeMemberPick = rand() % listOfHumans.size();
@@ -100,6 +106,7 @@ Human* World::humanPick(Human* aHuman, int typeMemberPick, int typePick) {
 	exit(EXIT_FAILURE);
     }
 }
+// Description - 
 Elf* World::elfPick(Elf* anElf, int typeMemberPick, int typePick) {
     if(listOfElves.size() > 0) {
 	typeMemberPick = rand() % listOfElves.size();
@@ -112,6 +119,7 @@ Elf* World::elfPick(Elf* anElf, int typeMemberPick, int typePick) {
 	exit(EXIT_FAILURE);
     }
 }
+// Description - 
 Cyberdemon* World::cyberdemonPick(Cyberdemon* aCyberdemon, int typeMemberPick, int typePick) {
     if(listOfCyberdemon.size() > 0) {
 	typeMemberPick = rand() % listOfCyberdemon.size();
@@ -124,6 +132,7 @@ Cyberdemon* World::cyberdemonPick(Cyberdemon* aCyberdemon, int typeMemberPick, i
 	exit(EXIT_FAILURE);
     }
 }
+// Description - 
 Balrog* World::balrogPick(Balrog* aBalrog, int typeMemberPick, int typePick) {
     if(listOfBalrogs.size() > 0) {
 	typeMemberPick = rand() % listOfBalrogs.size();
@@ -136,7 +145,18 @@ Balrog* World::balrogPick(Balrog* aBalrog, int typeMemberPick, int typePick) {
 	exit(EXIT_FAILURE);
     }
 }
+// Description - 
+bool World::isHumanDead(Human* aHuman) { 
+    if(aHuman->getHitpoints() <= 0) {
+	aHuman->setHitpoints(0);
 
+	std::cout << aHuman->getName() << " is dead!" << std::endl;
+	return true;
+    } else {
+	return false;
+    }
+}
+// Description - 
 void World::startRound() {
 
     // randomly pick the creature that attacks first 
@@ -165,7 +185,9 @@ void World::startRound() {
     std::string respone;
 
     do {
+	std::cout << "================ Round " << roundNumber << " ======================" << std::endl; 
 
+	// Makes sure that the same creature types are not the same
 	while(firstTypePick == secondTypePick) {
 	    firstTypePick = rand() % 4;
 	    secondTypePick = rand() % 4;
@@ -255,7 +277,9 @@ void World::startRound() {
 	switch(firstTypePick) {
 	    case 0: 
 		firstHuman->setHitpoints(firstHuman->getHitpoints() - secondDamage); 
-		std::cout << "Name: " << firstHuman->getName() << " health: " << firstHuman->getHitpoints() << std::endl;
+		if(!isHumanDead(firstHuman)) {
+		    std::cout << "Name: " << firstHuman->getName() << " health: " << firstHuman->getHitpoints() << std::endl;
+		}
 		break;
 	    case 1:
 		firstElf->setHitpoints(firstElf->getHitpoints() - secondDamage); 
@@ -277,7 +301,9 @@ void World::startRound() {
 	    case 0: 
 		// Human health -= secondDamage
 		secondHuman->setHitpoints(secondHuman->getHitpoints() - firstDamage); 
-		std::cout << "Name: " << secondHuman->getName() << " health: " << secondHuman->getHitpoints() << std::endl;
+		if(!isHumanDead(secondHuman)) {
+		    std::cout << "Name: " << secondHuman->getName() << " health: " << secondHuman->getHitpoints() << std::endl;
+		}	
 		break;
 	    case 1:
 		// elf health -= secondDamage
@@ -306,7 +332,7 @@ void World::startRound() {
 	std::cout << "Would you like to add a new creature? " << std::endl;
 	std::cin >> respone;
 	system("clear");
-
+	roundNumber++;
     } while(respone == "yes");
 
 }

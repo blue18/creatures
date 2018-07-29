@@ -7,6 +7,9 @@ class Human : public Creatures {
       ~Human();
       int getDamage();
       void setName(std::string);
+      void humanIsDead();
+      void setHumanIsDead(bool);
+      
     private:
 };
 #endif 

@@ -79,3 +79,6 @@ void Creatures::setType(int type) {
 void Creatures::setStrength(int strength) {
     this->strength = strength;
 }
+void Creatures::setCreatureIsDead(bool creatureIsDead) {
+    this->creatureIsDead = creatureIsDead;
+}

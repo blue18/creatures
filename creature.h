@@ -18,8 +18,11 @@ class Creatures {
       void setHitpoints(int);
       void setStrength(int);
       void setType(int);
+      void setCreatureIsDead(bool);
+
     private:
       std::string getSpecies();
+      bool creatureIsDead;
       int type;
       int strength;
       int hitpoints;

@@ -29,12 +29,14 @@ class World {
       void createBalrog(std::string);
       void displayCreatureTypes();
       void pickACreature(int, int); 
+      bool isHumanDead(Human*);
       Human* humanPick(Human*, int, int);
       Elf* elfPick(Elf*, int, int);
       Cyberdemon* cyberdemonPick(Cyberdemon*, int, int);
       Balrog* balrogPick(Balrog*, int, int);
 
     private:
+      unsigned int roundNumber;
       std::vector<Human> listOfHumans;
       std::vector<Elf> listOfElves;
       std::vector<Cyberdemon> listOfCyberdemon;

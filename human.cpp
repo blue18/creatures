@@ -4,7 +4,7 @@
 Human::Human() {
     setType(0);
     setStrength(10);
-    setHitpoints(1000);
+    setHitpoints(10);
 }
 Human::~Human() { 
 }
@@ -19,4 +19,7 @@ int Human::getDamage() {
     damage = Creatures::getDamage();
     std::cout << "human damage " << damage << std::endl;
     return damage; 
+}
+void Human::setHumanIsDead(bool isHumanDead) { 
+    Creatures::setCreatureIsDead(isHumanDead);
 }
