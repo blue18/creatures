@@ -95,12 +95,35 @@ void World::createBalrog(std::string name) {
 }
 // Description - 
 Human* World::humanPick(Human* aHuman, int typeMemberPick, int typePick) {
+    // If there are humans in the list
     if(listOfHumans.size() > 0) {
+	int count = 0;
+
+	// Get random human value from list
 	typeMemberPick = rand() % listOfHumans.size();
+
+	// Get the random human from the list
 	aHuman = &(listOfHumans.at(typeMemberPick));
-	if(aHuman->getHumanIsDead() == true) { return NULL; }
-	std::cout << "Pick: " << aHuman->getName() << std::endl;
-	std::cout << "Current health: " << aHuman->getHitpoints() << std::endl;
+
+	do {
+	// if human is dead, remove human from the list 
+	if(aHuman->getHumanIsDead() == true) { 
+	    std::cout << "Erasing index=" << typeMemberPick << " from human list." << std::endl;
+	    listOfHumans.erase(listOfHumans.begin() + typeMemberPick);
+	} else {
+	    std::cout << "Pick: " << aHuman->getName() << std::endl;
+	    std::cout << "Current health: " << aHuman->getHitpoints() << std::endl;
+	    return(aHuman);
+	}
+
+	count++;
+	} while(count < listOfHumans.size() + 1);
+
+	if(listOfHumans.size() == 0) {
+	    std::cout << "The human list is empty" << std::endl;
+	    return NULL;
+	}
+
 	return (aHuman);
     } else {
 	std::cout << "There are no humans in the list" << std::endl;
@@ -146,6 +169,18 @@ Balrog* World::balrogPick(Balrog* aBalrog, int typeMemberPick, int typePick) {
 	exit(EXIT_FAILURE);
     }
 }
+// Description - Remove the dead from the list
+void World::updateHumanList() {
+    for(int i = 0; i < listOfHumans.size(); i++) {
+		
+	if(isHumanDead(listOfHumans.at(i))) {
+	    // remove human from list
+	} else {	
+	    // do nothing
+	}
+    }
+}
+
 // Description - 
 bool World::isHumanDead(Human* aHuman) { 
     if(aHuman->getHitpoints() <= 0) {
@@ -191,10 +226,12 @@ void World::startRound() {
 
     std::string respone;
     
-    printStatus();
+    int xNumberOfTimes = 0;
+    int count = 0;
 
     do {
 
+	printStatus();
 	std::cout << "================ Round " << roundNumber << " ======================" << std::endl; 
 
 	// Makes sure that the same creature types are not the same
@@ -206,9 +243,7 @@ void World::startRound() {
 	// Pick first creature
 	switch(firstTypePick) {
 	    case 0:
-		do {
-		    firstHuman = humanPick(firstHuman, firstTypeMemberPick, firstTypePick);
-		} while(firstHuman == NULL);
+		firstHuman = humanPick(firstHuman, firstTypeMemberPick, firstTypePick);
 		break;
 	    case 1:
 		firstElf = elfPick(firstElf, firstTypeMemberPick, firstTypePick);
@@ -339,6 +374,9 @@ void World::startRound() {
 	// Reset values
 	firstTypePick = 0;
 	secondTypePick = 0;
+
+	// Check if there are any dead creatures (clean up section)
+	 		
 
 	// ask the user if more creatures will be added
 	std::cout << "Would you like to add a new creature? " << std::endl;
