@@ -30,6 +30,8 @@ class World {
       void displayCreatureTypes();
       void pickACreature(int, int); 
       void printStatus();
+      void printAllHumans();
+      void updateHumanList();
 
       bool isHumanDead(Human*);
       Human* humanPick(Human*, int, int);

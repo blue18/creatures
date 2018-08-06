@@ -11,6 +11,7 @@ class Human : public Creatures {
       void humanIsDead();
       void setHumanIsDead(bool);
       bool getHumanIsDead();      
+      void printAllHumans();
     private:
 };
 #endif 
