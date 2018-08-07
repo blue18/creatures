@@ -35,15 +35,15 @@ void World::addCreature() {
     std::cin >> type;
 
     if(type == "human") {
-	selectCreature(name, HUMAN);
+        selectCreature(name, HUMAN);
     } else if(type == "elf") {
-	selectCreature(name, ELF);
+        selectCreature(name, ELF);
     } else if(type == "cyberdemon") {
-	selectCreature(name, CYBERDEMON);
+        selectCreature(name, CYBERDEMON);
     } else if(type == "balrog") {
-	selectCreature(name, BALROG);
+        selectCreature(name, BALROG);
     } else {
-	std::cout << "Error" << std::endl;
+        std::cout << "Error" << std::endl;
     }
 }
 
@@ -93,98 +93,98 @@ void World::createBalrog(std::string name) {
     aBalrog.setName(name);
     listOfBalrogs.push_back(aBalrog);
 }
+
 // Description - 
 Human* World::humanPick(Human* aHuman, int typeMemberPick, int typePick) {
+
     // If there are humans in the list
     if(listOfHumans.size() > 0) {
+        // Get random human value from list
+        typeMemberPick = rand() % listOfHumans.size();
 
-		// Get random human value from list
-		typeMemberPick = rand() % listOfHumans.size();
+        // Get the random human from the list
+        aHuman = &(listOfHumans.at(typeMemberPick));
 
-		// Get the random human from the list
-		aHuman = &(listOfHumans.at(typeMemberPick));
+        std::cout << "Pick: " << aHuman->getName() << std::endl;
+        std::cout << "Current health: " << aHuman->getHitpoints() << std::endl;
 
-		std::cout << "Pick: " << aHuman->getName() << std::endl;
-		std::cout << "Current health: " << aHuman->getHitpoints() << std::endl;
-
-		return (aHuman);
+        return (aHuman);
     } else {
-		std::cout << "There are no humans in the list" << std::endl;
-		exit(EXIT_FAILURE);
+        std::cout << "There are no humans in the list" << std::endl;
+        exit(EXIT_FAILURE);
     }
 }
 // Description - 
 Elf* World::elfPick(Elf* anElf, int typeMemberPick, int typePick) {
     if(listOfElves.size() > 0) {
-	typeMemberPick = rand() % listOfElves.size();
-	anElf = &(listOfElves.at(typeMemberPick));
-	std::cout << "Pick: " << anElf->getName() << std::endl;
-	std::cout << "current health: " << anElf->getHitpoints() << std::endl;
-	return anElf; 
+	    typeMemberPick = rand() % listOfElves.size();
+	    anElf = &(listOfElves.at(typeMemberPick));
+	    std::cout << "Pick: " << anElf->getName() << std::endl;
+	    std::cout << "current health: " << anElf->getHitpoints() << std::endl;
+	    return anElf; 
     } else {
-	std::cout << "There are no elves in the list" << std::endl;
-	exit(EXIT_FAILURE);
+        std::cout << "There are no elves in the list" << std::endl;
+        exit(EXIT_FAILURE);
     }
 }
 // Description - 
 Cyberdemon* World::cyberdemonPick(Cyberdemon* aCyberdemon, int typeMemberPick, int typePick) {
     if(listOfCyberdemon.size() > 0) {
-	typeMemberPick = rand() % listOfCyberdemon.size();
-	aCyberdemon= &(listOfCyberdemon.at(typeMemberPick));
-	std::cout << "Pick: " << aCyberdemon->getName() << std::endl;
-	std::cout << "current health: " << aCyberdemon->getHitpoints() << std::endl;
-	return aCyberdemon; 
+        typeMemberPick = rand() % listOfCyberdemon.size();
+        aCyberdemon= &(listOfCyberdemon.at(typeMemberPick));
+        std::cout << "Pick: " << aCyberdemon->getName() << std::endl;
+        std::cout << "current health: " << aCyberdemon->getHitpoints() << std::endl;
+        return aCyberdemon; 
     } else {
-	std::cout << "There are no cyberdemons in the list" << std::endl;
-	exit(EXIT_FAILURE);
+        std::cout << "There are no cyberdemons in the list" << std::endl;
+        exit(EXIT_FAILURE);
     }
 }
 // Description - 
 Balrog* World::balrogPick(Balrog* aBalrog, int typeMemberPick, int typePick) {
     if(listOfBalrogs.size() > 0) {
-	typeMemberPick = rand() % listOfBalrogs.size();
-	aBalrog = &(listOfBalrogs.at(typeMemberPick));
-	std::cout << "Pick: " << aBalrog->getName() << std::endl;
-	std::cout << "current health: " << aBalrog->getHitpoints() << std::endl;
-	return aBalrog; 
+        typeMemberPick = rand() % listOfBalrogs.size();
+        aBalrog = &(listOfBalrogs.at(typeMemberPick));
+        std::cout << "Pick: " << aBalrog->getName() << std::endl;
+        std::cout << "current health: " << aBalrog->getHitpoints() << std::endl;
+        return aBalrog; 
     } else {
-	std::cout << "There are no balrog in the list" << std::endl;
-	exit(EXIT_FAILURE);
+        std::cout << "There are no balrog in the list" << std::endl;
+        exit(EXIT_FAILURE);
     }
 }
-// Description - Remove the dead from the list
-void World::updateHumanList() {
-    for(int i = 0; i < listOfHumans.size(); i++) {
-		
-		if(isHumanDead(&(listOfHumans.at(i)))) {
-			// remove human from list
-			listOfHumans.erase(listOfHumans.begin() + i);
-			printAllHumans();
-		} else {	
-			// do nothing
-		}
-    }
-}
-
-// Description - 
+// Description - Prints all humans currently in the game
 void World::printAllHumans() {
-    for(int i = 0; i < listOfHumans.size(); i++) {
-		std::cout << "Name " << listOfHumans.at(i).getName() << " [" << i << "] " << std::endl; 
+    if(listOfHumans.size() > 0) {
+        for(int i = 0; i < listOfHumans.size(); i++) {
+            std::cout << "Name " << listOfHumans.at(i).getName() << " [" << i << "] " << std::endl; 
+        }
+    } else {
+        std::cout << "There are no humans in the game." << std::endl;
     }
 }
 
-// Description - 
+// Description - Checks if human is dead or alive
 bool World::isHumanDead(Human* aHuman) { 
     if(aHuman->getHitpoints() <= 0) {
-		aHuman->setHitpoints(0);
-		aHuman->setHumanIsDead(true); 
 		std::cout << aHuman->getName() << " is dead!" << std::endl;
+        removeHuman(aHuman);
 		return true;
     } else {
 		return false;
     }
 }
-void World::printStatus() {
+// Description - Removes a human from the game
+void World::removeHuman(Human* aHuman) {
+    for(int i = 0; i < listOfHumans.size(); i++) {
+        if(listOfHumans.at(i).getName() == aHuman->getName()) {
+            std::cout << "Deleting " << listOfHumans.at(i).getName() << std::endl;
+            listOfHumans.erase(listOfHumans.begin() + i);  
+        }
+    }
+}
+// Description - Prints the size of all creatures
+void World::printSizeStatus() {
     std::cout << "Size of Human: " << listOfHumans.size() << std::endl;
     std::cout << "Size of Elf: " << listOfElves.size() << std::endl;
     std::cout << "Size of Cyberdemon: " << listOfCyberdemon.size() << std::endl;
@@ -223,161 +223,160 @@ void World::startRound() {
 
     do {
 
-	printStatus();
-	std::cout << "================ Round " << roundNumber << " ======================" << std::endl; 
+        printSizeStatus();
+        std::cout << "================ Round " << roundNumber << " ======================" << std::endl; 
 
-	// Makes sure that the same creature types are not the same
-	while(firstTypePick == secondTypePick) {
-	    firstTypePick = rand() % 4;
-	    secondTypePick = rand() % 4;
+        // Makes sure that the same creature types are not the same
+        while(firstTypePick == secondTypePick) {
+            firstTypePick = rand() % 4;
+            secondTypePick = rand() % 4;
         }
 
-	// Pick first creature
-	switch(firstTypePick) {
-	    case 0:
-		firstHuman = humanPick(firstHuman, firstTypeMemberPick, firstTypePick);
-		break;
-	    case 1:
-		firstElf = elfPick(firstElf, firstTypeMemberPick, firstTypePick);
-		break;
-	    case 2:
-		firstCyberdemon= cyberdemonPick(firstCyberdemon, firstTypeMemberPick, firstTypePick);
-		break;
-	    case 3:
-		firstBalrog = balrogPick(firstBalrog, firstTypeMemberPick, firstTypePick);
-		break;
-	    default:
-		std::cout << "Error for startSound(1)" << std::endl;
-	}
+        // Pick first creature
+        switch(firstTypePick) {
+            case 0:
+                firstHuman = humanPick(firstHuman, firstTypeMemberPick, firstTypePick);
+                break;
+            case 1:
+                firstElf = elfPick(firstElf, firstTypeMemberPick, firstTypePick);
+                break;
+            case 2:
+                firstCyberdemon= cyberdemonPick(firstCyberdemon, firstTypeMemberPick, firstTypePick);
+                break;
+            case 3:
+                firstBalrog = balrogPick(firstBalrog, firstTypeMemberPick, firstTypePick);
+                break;
+            default:
+                std::cout << "Error for startSound(1)" << std::endl;
+        }
 
-	std::cout << "====================================" << std::endl;
+        std::cout << "====================================" << std::endl;
 
-	// Pick second creature
-	switch(secondTypePick) {
-	    case 0:
-		secondHuman = humanPick(secondHuman, secondTypeMemberPick, secondTypePick);
-		break;
-	    case 1:
-		secondElf = elfPick(secondElf, secondTypeMemberPick, secondTypePick);
-		break;
-	    case 2:
-		secondCyberdemon = cyberdemonPick(secondCyberdemon, secondTypeMemberPick, secondTypePick);
-		break;
-	    case 3:
-		secondBalrog = balrogPick(secondBalrog, secondTypeMemberPick, secondTypePick);
-		break;
-	    default:
-		std::cout << "Error for startSound(2)" << std::endl;
-	    }
+        // Pick second creature
+        switch(secondTypePick) {
+            case 0:
+                secondHuman = humanPick(secondHuman, secondTypeMemberPick, secondTypePick);
+                break;
+            case 1:
+                secondElf = elfPick(secondElf, secondTypeMemberPick, secondTypePick);
+                break;
+            case 2:
+                secondCyberdemon = cyberdemonPick(secondCyberdemon, secondTypeMemberPick, secondTypePick);
+                break;
+            case 3:
+                secondBalrog = balrogPick(secondBalrog, secondTypeMemberPick, secondTypePick);
+                break;
+            default:
+                std::cout << "Error for startSound(2)" << std::endl;
+            }
 
-	std::cout << "====================================" << std::endl;
+        std::cout << "====================================" << std::endl;
 
-	// Get attack value from first creature
-	switch(firstTypePick) { 
-	    case 0:
-		firstDamage = firstHuman->getDamage();
-		break;
-	    case 1:
-		firstDamage = firstElf->getDamage();
-		break;
-	    case 2:
-		firstDamage = firstCyberdemon->getDamage();
-		break;
-	    case 3:
-		firstDamage = firstBalrog->getDamage();
-		break;
-	    default:
-		std::cout << "Error on line 220" << std::endl;
-	}
+        // Get attack value from first creature
+        switch(firstTypePick) { 
+            case 0:
+                firstDamage = firstHuman->getDamage();
+                break;
+            case 1:
+                firstDamage = firstElf->getDamage();
+                break;
+            case 2:
+                firstDamage = firstCyberdemon->getDamage();
+                break;
+            case 3:
+                firstDamage = firstBalrog->getDamage();
+                break;
+            default:
+                std::cout << "Error on line 220" << std::endl;
+        }
 
-	std::cout << "====================================" << std::endl;
+        std::cout << "====================================" << std::endl;
 
-	// Get attack value from second creature
-	switch(secondTypePick) { 
-	    case 0:
-		secondDamage = secondHuman->getDamage();
-		break;
-	    case 1:
-		secondDamage = secondElf->getDamage();
-		break;
-	    case 2:
-		secondDamage = secondCyberdemon->getDamage();
-		break;
-	    case 3:
-		secondDamage = secondBalrog->getDamage();
-		break;
-	    default:
-		std::cout << "Error for startRoudn(4)" << std::endl;
-	}   
+        // Get attack value from second creature
+        switch(secondTypePick) { 
+            case 0:
+                secondDamage = secondHuman->getDamage();
+                break;
+            case 1:
+                secondDamage = secondElf->getDamage();
+                break;
+            case 2:
+                secondDamage = secondCyberdemon->getDamage();
+                break;
+            case 3:
+                secondDamage = secondBalrog->getDamage();
+                break;
+            default:
+                std::cout << "Error for startRoudn(4)" << std::endl;
+        }   
 
-	std::cout << "==============After Attack======================" << std::endl;
-	
-	// Calculate the damage 
-	switch(firstTypePick) {
-	    case 0: 
-		firstHuman->setHitpoints(firstHuman->getHitpoints() - secondDamage); 
-		if(!isHumanDead(firstHuman)) {
-		    std::cout << "Name: " << firstHuman->getName() << " health: " << firstHuman->getHitpoints() << std::endl;
-		}
-		break;
-	    case 1:
-		firstElf->setHitpoints(firstElf->getHitpoints() - secondDamage); 
-		std::cout << "Name: " << firstElf->getName() << " health: " << firstElf->getHitpoints() << std::endl;
-		break;
-	    case 2:
-		firstCyberdemon->setHitpoints(firstCyberdemon->getHitpoints() - secondDamage); 
-		std::cout << "Name: " << firstCyberdemon->getName() << " health: " << firstCyberdemon->getHitpoints() << std::endl;
-		break;
-	    case 3:
-		firstBalrog->setHitpoints(firstBalrog->getHitpoints() - secondDamage); 
-		std::cout << "Name: " << firstBalrog->getName() << " health: " << firstBalrog->getHitpoints() << std::endl;
-		break;
-	    default:
-		std::cout << "Error for startSound(5)" << std::endl;
-	}
+        std::cout << "==============After Attack======================" << std::endl;
+        
+        // Calculate the damage 
+        switch(firstTypePick) {
+            case 0: 
+                firstHuman->setHitpoints(firstHuman->getHitpoints() - secondDamage); 
+                if(!isHumanDead(firstHuman)) {
+                    std::cout << "Name: " << firstHuman->getName() << " health: " << firstHuman->getHitpoints() << std::endl;
+                }
+                break;
+            case 1:
+                firstElf->setHitpoints(firstElf->getHitpoints() - secondDamage); 
+                std::cout << "Name: " << firstElf->getName() << " health: " << firstElf->getHitpoints() << std::endl;
+                break;
+            case 2:
+                firstCyberdemon->setHitpoints(firstCyberdemon->getHitpoints() - secondDamage); 
+                std::cout << "Name: " << firstCyberdemon->getName() << " health: " << firstCyberdemon->getHitpoints() << std::endl;
+                break;
+            case 3:
+                firstBalrog->setHitpoints(firstBalrog->getHitpoints() - secondDamage); 
+                std::cout << "Name: " << firstBalrog->getName() << " health: " << firstBalrog->getHitpoints() << std::endl;
+                break;
+            default:
+            std::cout << "Error for startSound(5)" << std::endl;
+        }
 
-	switch(secondTypePick) {
-	    case 0: 
-		// Human health -= secondDamage
-		secondHuman->setHitpoints(secondHuman->getHitpoints() - firstDamage); 
-		if(!isHumanDead(secondHuman)) {
-		    std::cout << "Name: " << secondHuman->getName() << " health: " << secondHuman->getHitpoints() << std::endl;
-		}	
-		break;
-	    case 1:
-		// elf health -= secondDamage
-		secondElf->setHitpoints(secondElf->getHitpoints() - firstDamage); 
-		std::cout << "Name: " << secondElf->getName() << " health: " << secondElf->getHitpoints() << std::endl;
-		break;
-	    case 2:
-		// cyber health -= secondDamage 
-		secondCyberdemon->setHitpoints(secondCyberdemon->getHitpoints() - firstDamage); 
-		std::cout << "Name: " << secondCyberdemon->getName() << " health: " << secondCyberdemon->getHitpoints() << std::endl;
-		break;
-	    case 3:
-		// balrog health -= secondDamage
-		secondBalrog->setHitpoints(secondBalrog->getHitpoints() - firstDamage); 
-		std::cout << "Name: " << secondBalrog->getName() << " health: " << secondBalrog->getHitpoints() << std::endl;
-		break;
-	    default:
-		std::cout << "Error for startSound(5)" << std::endl;
-	}
+        switch(secondTypePick) {
+            case 0: 
+                // Human health -= secondDamage
+                secondHuman->setHitpoints(secondHuman->getHitpoints() - firstDamage); 
+                if(!isHumanDead(secondHuman)) {
+                    std::cout << "Name: " << secondHuman->getName() << " health: " << secondHuman->getHitpoints() << std::endl;
+                }	
+                break;
+            case 1:
+                // elf health -= secondDamage
+                secondElf->setHitpoints(secondElf->getHitpoints() - firstDamage); 
+                std::cout << "Name: " << secondElf->getName() << " health: " << secondElf->getHitpoints() << std::endl;
+                break;
+            case 2:
+                // cyber health -= secondDamage 
+                secondCyberdemon->setHitpoints(secondCyberdemon->getHitpoints() - firstDamage); 
+                std::cout << "Name: " << secondCyberdemon->getName() << " health: " << secondCyberdemon->getHitpoints() << std::endl;
+                break;
+            case 3:
+                // balrog health -= secondDamage
+                secondBalrog->setHitpoints(secondBalrog->getHitpoints() - firstDamage); 
+                std::cout << "Name: " << secondBalrog->getName() << " health: " << secondBalrog->getHitpoints() << std::endl;
+                break;
+            default:
+                std::cout << "Error for startSound(5)" << std::endl;
+        }
 
-	// Reset values
-	firstTypePick = 0;
-	secondTypePick = 0;
+        // Reset values
+        firstTypePick = 0;
+        secondTypePick = 0;
 
-	// Check if there are any dead creatures (clean up section)
-	updateHumanList();
-	 		
+        // Print all creatures
+        // Humans
+        printAllHumans();
 
-	// ask the user if more creatures will be added
-	std::cout << "Would you like to add a new creature? " << std::endl;
-	std::cin >> respone;
-	system("clear");
-	roundNumber++;
+        // ask the user if more creatures will be added
+        std::cout << "Would you like to add a new creature? " << std::endl;
+        std::cin >> respone;
+        system("clear");
+        roundNumber++;
     } while(respone == "yes");
-
 }
 
 

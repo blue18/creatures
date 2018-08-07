@@ -29,9 +29,10 @@ class World {
       void createBalrog(std::string);
       void displayCreatureTypes();
       void pickACreature(int, int); 
-      void printStatus();
+      void printSizeStatus();
       void printAllHumans();
       void updateHumanList();
+      void removeHuman(Human* aHuman);
 
       bool isHumanDead(Human*);
       Human* humanPick(Human*, int, int);
