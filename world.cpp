@@ -6,13 +6,16 @@
 #include <queue>
 #include <cstdlib>
 
+// Description -
 World::World() {
     // Start the round with zero
     roundNumber = 0; 
 }
 
+// Description -
 World::~World() {
 }
+
 // Description - Display possible types of creatures
 void World::displayCreatureTypes() {
     std::cout << "1. human" << std::endl;
@@ -94,17 +97,18 @@ void World::createBalrog(std::string name) {
     listOfBalrogs.push_back(aBalrog);
 }
 
-// Description - 
+// Description -
 Human* World::humanPick(Human* aHuman, int typeMemberPick, int typePick) {
 
     // If there are humans in the list
     if(listOfHumans.size() > 0) {
+
         // Get random human value from list
         typeMemberPick = rand() % listOfHumans.size();
 
         // Get the random human from the list
         aHuman = &(listOfHumans.at(typeMemberPick));
-
+ 
         std::cout << "Pick: " << aHuman->getName() << std::endl;
         std::cout << "Current health: " << aHuman->getHitpoints() << std::endl;
 
@@ -168,7 +172,7 @@ void World::printAllHumans() {
 bool World::isHumanDead(Human* aHuman) { 
     if(aHuman->getHitpoints() <= 0) {
 		std::cout << aHuman->getName() << " is dead!" << std::endl;
-        removeHuman(aHuman);
+        aHuman->setHumanIsDead(true);
 		return true;
     } else {
 		return false;
@@ -189,7 +193,47 @@ void World::printSizeStatus() {
     std::cout << "Size of Elf: " << listOfElves.size() << std::endl;
     std::cout << "Size of Cyberdemon: " << listOfCyberdemon.size() << std::endl;
     std::cout << "Size of Balrog: " << listOfBalrogs.size() << std::endl;
+    std::cout << "Total number of creatures in the game: " << creaturesInGame() << std::endl;
 }
+
+// Description -
+bool World::isListEmpty(int type) {
+    switch(type) { 
+        case 0:
+            return (listOfHumans.size() == 0);
+        case 1:
+            return (listOfElves.size() == 0);
+        case 2:
+            return (listOfCyberdemon.size() == 0);
+        case 3:
+            return (listOfBalrogs.size() == 0);
+        default:
+            return -1;
+    }
+}
+
+// Description - Erase all dead humans 
+void World::cleanHumanList() {
+    std::cout << "Cleaning human list" << std::endl;
+    for(int i = 0; i < listOfHumans.size(); i++) { 
+        if(listOfHumans.at(i).getHumanIsDead() == true) {
+            listOfHumans.erase(listOfHumans.begin() + i);
+        }
+    }
+}
+// Description -
+int World::creaturesInGame() { 
+    return(listOfHumans.size() + listOfElves.size() + listOfCyberdemon.size() + listOfBalrogs.size());
+}
+
+// Description -
+void World::determineWinner() {
+    int oneWinner = 1;
+    if(creaturesInGame() == oneWinner) {
+        std::cout << "[name] wins! " << std::endl; 
+    }
+}
+
 // Description - 
 void World::startRound() {
 
@@ -217,20 +261,22 @@ void World::startRound() {
     int secondDamage = 0;
 
     std::string respone;
-    
-    int xNumberOfTimes = 0;
-    int count = 0;
+
+    bool listStatus = false;
 
     do {
 
         printSizeStatus();
         std::cout << "================ Round " << roundNumber << " ======================" << std::endl; 
 
-        // Makes sure that the same creature types are not the same
-        while(firstTypePick == secondTypePick) {
+        // Choose random creatures to fight each other 
+        // Pick lists that are not empty
+        do {
+            std::cout << "Picking random creatures..." << std::endl;
             firstTypePick = rand() % 4;
             secondTypePick = rand() % 4;
-        }
+            listStatus = isListEmpty(firstTypePick) || isListEmpty(secondTypePick);
+        } while(listStatus);
 
         // Pick first creature
         switch(firstTypePick) {
@@ -287,7 +333,7 @@ void World::startRound() {
                 firstDamage = firstBalrog->getDamage();
                 break;
             default:
-                std::cout << "Error on line 220" << std::endl;
+                std::cout << "Error on line 291" << std::endl;
         }
 
         std::cout << "====================================" << std::endl;
@@ -363,9 +409,15 @@ void World::startRound() {
                 std::cout << "Error for startSound(5)" << std::endl;
         }
 
-        // Reset values
+        // Reset creature index values
         firstTypePick = 0;
         secondTypePick = 0;
+
+        // Clean the of dead humans 
+        cleanHumanList();
+
+        // Determine if there is a winner
+        determineWinner();
 
         // Print all creatures
         // Humans

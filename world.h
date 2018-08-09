@@ -33,7 +33,11 @@ class World {
       void printAllHumans();
       void updateHumanList();
       void removeHuman(Human* aHuman);
+      void cleanHumanList();
+      void determineWinner();
 
+      int creaturesInGame();
+      bool isListEmpty(int);
       bool isHumanDead(Human*);
       Human* humanPick(Human*, int, int);
       Elf* elfPick(Elf*, int, int);
@@ -42,6 +46,7 @@ class World {
 
     private:
       unsigned int roundNumber;
+      unsigned int creaturesInTheGame;
       std::vector<Human> listOfHumans;
       std::vector<Elf> listOfElves;
       std::vector<Cyberdemon> listOfCyberdemon;
